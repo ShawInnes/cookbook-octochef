@@ -1,0 +1,24 @@
+---
+driver:
+  name: vagrant
+  gui: true
+  provider: virtualbox
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: true
+    
+verifier:
+  name: inspec
+
+platforms:
+  - name: windows2012r2-windowsonly
+    transport:
+      name: winrm
+      elevated: true
+
+suites:
+  - name: default
+    run_list:
+      - recipe[seq::default]
+    attributes:
