@@ -2,7 +2,7 @@
 driver:
   name: vagrant
   gui: true
-  provider: virtualbox
+  # provider: virtualbox
 
 provisioner:
   name: chef_zero
