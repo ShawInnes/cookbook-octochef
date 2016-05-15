@@ -7,12 +7,12 @@ driver:
 provisioner:
   name: chef_zero
   require_chef_omnibus: true
-    
+
 verifier:
   name: inspec
 
 platforms:
-  - name: windows2012r2-windowsonly
+  - name: OctopusServer
     transport:
       name: winrm
       elevated: true
@@ -20,5 +20,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[seq::default]
+      - recipe[seq::install]
     attributes:
