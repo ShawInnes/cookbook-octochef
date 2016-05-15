@@ -1,0 +1,213 @@
+{
+  "Project": {
+    "Id": "Projects-23",
+    "VariableSetId": "variableset-Projects-23",
+    "DeploymentProcessId": "deploymentprocess-Projects-23",
+    "IncludedLibraryVariableSetIds": [],
+    "DefaultToSkipIfAlreadyInstalled": false,
+    "VersioningStrategy": {
+      "DonorPackageStepId": null,
+      "Template": "#{Octopus.Version.LastMajor}.#{Octopus.Version.LastMinor}.#{Octopus.Version.NextPatch}"
+    },
+    "ReleaseCreationStrategy": {
+      "ReleaseCreationPackageStepId": "",
+      "ChannelId": null
+    },
+    "Name": "PublicWeb",
+    "Slug": "publicweb",
+    "Description": "",
+    "IsDisabled": false,
+    "ProjectGroupId": "ProjectGroups-21",
+    "LifecycleId": "Lifecycles-1",
+    "AutoCreateRelease": false,
+    "Links": {
+      "Self": "/octopus/api/projects/Projects-23",
+      "Releases": "/octopus/api/projects/Projects-23/releases{/version}{?skip}",
+      "Channels": "/octopus/api/projects/Projects-23/channels",
+      "OrderChannels": "/octopus/api/projects/Projects-23/channels/order",
+      "Variables": "/octopus/api/variables/variableset-Projects-23",
+      "Progression": "/octopus/api/progression/Projects-23",
+      "DeploymentProcess": "/octopus/api/deploymentprocesses/deploymentprocess-Projects-23",
+      "Web": "/octopus/app#/projects/Projects-23",
+      "Logo": "/octopus/api/projects/Projects-23/logo"
+    }
+  },
+  "ProjectGroup": {
+    "Id": "ProjectGroups-21",
+    "Name": "Demo"
+  },
+  "VariableSet": {
+    "Id": "variableset-Projects-23",
+    "OwnerId": "Projects-23",
+    "Version": 3,
+    "Variables": [
+      {
+        "Id": "66b50dcc-6ad3-14d6-48d3-b58c4da5af3b",
+        "Name": "Sample.WebLink",
+        "Value": "http://develpment.demo/",
+        "Scope": {
+          "Environment": [
+            "Environments-1"
+          ]
+        },
+        "IsSensitive": false,
+        "IsEditable": true,
+        "Prompt": null
+      },
+      {
+        "Id": "541a55b6-c2ab-960f-0459-31c5c00b52a2",
+        "Name": "Sample.WebLink",
+        "Value": "http://test.demo/",
+        "Scope": {
+          "Environment": [
+            "Environments-2"
+          ]
+        },
+        "IsSensitive": false,
+        "IsEditable": true,
+        "Prompt": null
+      },
+      {
+        "Id": "7efde61f-931e-5216-6096-8afd01d08597",
+        "Name": "Sample.WebLink",
+        "Value": "http://production.demo/",
+        "Scope": {
+          "Environment": [
+            "Environments-3"
+          ]
+        },
+        "IsSensitive": false,
+        "IsEditable": true,
+        "Prompt": null
+      }
+    ],
+    "ScopeValues": {
+      "Environments": [
+        {
+          "Id": "Environments-1",
+          "Name": "Development"
+        },
+        {
+          "Id": "Environments-2",
+          "Name": "Test"
+        },
+        {
+          "Id": "Environments-3",
+          "Name": "Production"
+        }
+      ],
+      "Machines": [
+        {
+          "Id": "Machines-1",
+          "Name": "Local"
+        }
+      ],
+      "Actions": [
+        {
+          "Id": "3ba5c7ff-4e9c-4af2-af00-4722d29b3e88",
+          "Name": "1. Install Package"
+        }
+      ],
+      "Roles": [
+        {
+          "Id": "web",
+          "Name": "web"
+        }
+      ],
+      "Channels": [
+        {
+          "Id": "Channels-23",
+          "Name": "Default"
+        }
+      ]
+    },
+    "Links": {
+      "Self": "/octopus/api/variables/variableset-Projects-23"
+    }
+  },
+  "NuGetFeeds": [
+    {
+      "Id": "feeds-builtin",
+      "Name": "Octopus Server (built-in)"
+    }
+  ],
+  "ActionTemplates": [],
+  "DeploymentProcess": {
+    "Id": "deploymentprocess-Projects-23",
+    "ProjectId": "Projects-23",
+    "Steps": [
+      {
+        "Id": "797a33b0-d6f1-46a4-bf61-48d5b350833b",
+        "Name": "Install Package",
+        "RequiresPackagesToBeAcquired": false,
+        "Properties": {
+          "Octopus.Action.TargetRoles": "web"
+        },
+        "Condition": "Success",
+        "StartTrigger": "StartAfterPrevious",
+        "Actions": [
+          {
+            "Id": "3ba5c7ff-4e9c-4af2-af00-4722d29b3e88",
+            "Name": "Install Package",
+            "ActionType": "Octopus.TentaclePackage",
+            "Environments": [],
+            "Channels": [],
+            "Properties": {
+              "Octopus.Action.EnabledFeatures": "Octopus.Features.ConfigurationVariables,Octopus.Features.ConfigurationTransforms,Octopus.Features.IISWebSite",
+              "Octopus.Action.Package.AutomaticallyRunConfigurationTransformationFiles": "True",
+              "Octopus.Action.Package.AutomaticallyUpdateAppSettingsAndConnectionStrings": "True",
+              "Octopus.Action.Package.DownloadOnTentacle": "False",
+              "Octopus.Action.Package.NuGetFeedId": "feeds-builtin",
+              "Octopus.Action.Package.NuGetPackageId": "OctoSample.PublicWeb",
+              "Octopus.Action.IISWebSite.CreateOrUpdateWebSite": "True",
+              "Octopus.Action.IISWebSite.Bindings": "[{\"protocol\":\"http\",\"ipAddress\":\"*\",\"port\":\"80\",\"host\":\"#{Octopus.Environment.Name}.demo\",\"thumbprint\":\"\",\"requireSni\":false,\"enabled\":true}]",
+              "Octopus.Action.IISWebSite.ApplicationPoolFrameworkVersion": "v4.0",
+              "Octopus.Action.IISWebSite.ApplicationPoolIdentityType": "ApplicationPoolIdentity",
+              "Octopus.Action.IISWebSite.EnableAnonymousAuthentication": "True",
+              "Octopus.Action.IISWebSite.EnableBasicAuthentication": "False",
+              "Octopus.Action.IISWebSite.EnableWindowsAuthentication": "False",
+              "Octopus.Action.IISWebSite.WebSiteName": "#{Octopus.Environment.Name}",
+              "Octopus.Action.IISWebSite.ApplicationPoolName": "#{Octopus.Environment.Name}"
+            },
+            "Links": {}
+          }
+        ]
+      }
+    ],
+    "Version": 3,
+    "LastSnapshotId": null,
+    "Links": {
+      "Self": "/octopus/api/deploymentprocesses/deploymentprocess-Projects-23",
+      "Project": "/octopus/api/projects/Projects-23",
+      "Template": "/octopus/api/deploymentprocesses/deploymentprocess-Projects-23/template{?channel,releaseId}"
+    }
+  },
+  "LibraryVariableSets": [],
+  "Lifecycle": {
+    "Id": "Lifecycles-1",
+    "Name": "Default Lifecycle"
+  },
+  "Channels": [
+    {
+      "Id": "Channels-23",
+      "Name": "Default",
+      "Description": null,
+      "ProjectId": "Projects-23",
+      "LifecycleId": null,
+      "IsDefault": true,
+      "Rules": [],
+      "Links": {
+        "Self": "/octopus/api/channels/Channels-23",
+        "Releases": "/octopus/api/channels/Channels-23/releases",
+        "Project": "/octopus/api/projects/Projects-23"
+      }
+    }
+  ],
+  "ChannelLifecycles": [],
+  "$Meta": {
+    "ExportedAt": "2016-05-15T16:57:58.092+10:00",
+    "OctopusVersion": "3.3.12",
+    "Type": "project",
+    "ContainerType": "ProjectWithDependencies"
+  }
+}

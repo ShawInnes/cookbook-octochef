@@ -5,7 +5,7 @@ resource_name :octopus
 default_action :deploy
 
 property :project, String, name_property: true
-property :environment, String, required: true
+property :deployto, String, required: true
 property :version, String, required: true
 
 property :server, String, default: 'http://localhost/octopus'
@@ -23,20 +23,20 @@ action :deploy do
     not_if { current_version == version }
   end
 
-  log "deploy '#{project}' Version '#{version}' to '#{environment}'" do
+  log "deploy '#{project}' Version '#{version}' to '#{deployto}'" do
     level :info
     not_if { current_version == version }
   end
 
   execute 'deploy-release' do
-    command "octo deploy-release --server=\"#{server}\" --apiKey=\"#{apikey}\" --waitForDeployment --project=\"#{project}\" --deployTo=\"#{environment}\" --releaseNumber=\"#{version}\""
+    command "octo deploy-release --server=\"#{server}\" --apiKey=\"#{apikey}\" --waitForDeployment --project=\"#{project}\" --deployTo=\"#{deployto}\" --releaseNumber=\"#{version}\""
     action :run
     not_if { current_version == version }
   end
 end
 
 def query_current_version
-  octocmd = "octo list-latestdeployments --server=\"#{server}\" --apiKey=\"#{apikey}\" --project=\"#{project}\" --environment=\"#{environment}\""
+  octocmd = "octo list-latestdeployments --server=\"#{server}\" --apiKey=\"#{apikey}\" --project=\"#{project}\" --environment=\"#{deployto}\""
   output = shell_out! octocmd
   output = output.stdout
 

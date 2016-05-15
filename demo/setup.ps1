@@ -1,11 +1,6 @@
-
 "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" configure --instance "OctopusServer" --webForceSSL "False"
 "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" configure --instance "OctopusServer" --webListenPrefixes "http://localhost/octopus"
 "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" service --instance "OctopusServer" --stop --start
-
-wget https://api.nuget.org/packages/octosample.orderprocessingserver.1.0.50.nupkg -Outfile octosample.orderprocessingserver.1.0.50.nupkg
-wget https://api.nuget.org/packages/octosample.publicweb.1.0.50.nupkg -Outfile octosample.publicweb.1.0.50.nupkg
-
 
 octo push --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U --replace-existing --package="octosample.orderprocessingserver.1.0.50.nupkg"
 octo push --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U --replace-existing --package="octosample.publicweb.1.0.50.nupkg"
@@ -18,6 +13,10 @@ octo create-project --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGN
 octo create-project --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U --ignoreIfExists --name="OrderProcessingServer" --projectGroup="Demo" --lifecycle="Default Lifecycle"
 
 octo create-release --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U --ignoreExisting --releaseNumber="1.0.50" --project "PublicWeb"
+octo create-release --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U --ignoreExisting --releaseNumber="1.0.60" --project "PublicWeb"
+octo create-release --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U --ignoreExisting --releaseNumber="1.0.70" --project "PublicWeb"
+octo create-release --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U --ignoreExisting --releaseNumber="1.0.80" --project "PublicWeb"
+
 octo create-release --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U --ignoreExisting --releaseNumber="1.0.50" --project "OrderProcessingServer"
 
 octo export --server=http://localhost/octopus --apiKey=API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U --type="Project" --name="PublicWeb" --releaseVersion="1.0.50" --filePath="PublicWeb.json"
