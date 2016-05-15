@@ -10,14 +10,14 @@ octopus 'PublicWeb' do
   action :deploy
 end
 
-# octopus 'PublicWeb' do
-#   version '1.0.50'
-#   deployto 'Test'
-#   action :deploy
-# end
-#
-# octopus 'PublicWeb' do
-#   version '1.0.50'
-#   deployto 'Production'
-#   action :deploy
-# end
+#octopus 'PublicWeb' do
+#  version '1.0.70'
+#  deployto 'Test'
+#  action :deploy
+#end
+
+#octopus 'PublicWeb' do
+#  version '1.0.60'
+#  deployto 'Production'
+#  action :deploy
+#end
