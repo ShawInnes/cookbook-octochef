@@ -2,7 +2,7 @@
 # Cookbook Name:: cookbook-seq
 # Spec:: default
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
+# Copyright (c) 2016 Shaw Innes, All Rights Reserved.
 
 require 'spec_helper'
 

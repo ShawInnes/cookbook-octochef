@@ -2,7 +2,7 @@
 # Cookbook Name:: cookbook-octochef
 # Recipe:: firewall
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
+# Copyright (c) 2016 Shaw Innes, All Rights Reserved.
 
 windows_firewall_rule 'PublicWeb' do
   localport '80'

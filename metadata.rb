@@ -1,5 +1,5 @@
 name 'octochef'
-maintainer 'Shaw Innes'
+maintainer 'Shaw Inneses'
 maintainer_email 'shaw@immortal.net.au'
 license 'all_rights'
 description 'Installs/Configures OctoChef Demo'

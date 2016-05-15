@@ -2,7 +2,7 @@
 # Cookbook Name:: cookbook-octochef
 # Recipe:: install
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
+# Copyright (c) 2016 Shaw Innes, All Rights Reserved.
 
 package 'Seq' do
   source node['seq']['source']

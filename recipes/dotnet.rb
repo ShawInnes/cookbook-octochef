@@ -2,7 +2,7 @@
 # Cookbook Name:: cookbook-seq
 # Recipe:: dotnet
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
+# Copyright (c) 2016 Shaw Innes, All Rights Reserved.
 
 sources = { '6c2c589132e830a185c5f40f82042bee3022e721a216680bd9b3995ba86f3781' => node['dotnet']['source'].to_s }
 
