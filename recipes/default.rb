@@ -12,5 +12,5 @@
 include_recipe 'octochef::iis'
 include_recipe 'octochef::deploy'
 
-# include_recipe 'octochef::seq'
-# include_recipe 'octochef::firewall'
+include_recipe 'octochef::seq'
+include_recipe 'octochef::firewall'
