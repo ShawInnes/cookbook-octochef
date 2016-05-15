@@ -4,11 +4,22 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-features = %w('Web-WebServer', 'Web-Asp-Net45', 'Web-Scripting-Tools', 'Web-Mgmt-Console')
+windows_feature 'Web-WebServer' do
+  provider Chef::Provider::WindowsFeaturePowershell
+  action :install
+end
 
-features.each do |feature|
-  windows_feature feature do
-    provider Chef::Provider::WindowsFeaturePowershell
-    action :install
-  end
+windows_feature 'Web-Asp-Net45' do
+  provider Chef::Provider::WindowsFeaturePowershell
+  action :install
+end
+
+windows_feature 'Web-Scripting-Tools' do
+  provider Chef::Provider::WindowsFeaturePowershell
+  action :install
+end
+
+windows_feature 'Web-Mgmt-Console' do
+  provider Chef::Provider::WindowsFeaturePowershell
+  action :install
 end

@@ -12,7 +12,6 @@ property :server, String, default: 'http://localhost/octopus'
 property :apikey, String, default: 'API-RJHCGXDDWUAGNS7GBQTVK3ZQ0U'
 
 load_current_value do
-
 end
 
 action :deploy do
@@ -40,6 +39,7 @@ def query_current_version
   output = shell_out! octocmd
   output = output.stdout
 
-  match = output.match(/State: Success(\s+)Version: (?<version>.?*)[\r\n]/)
-  match['version'].to_s.strip
+  match = output.match(/State: Success(\s+)Version: (?<version>.*)[\r\n]/)
+  return match['version'].to_s.strip if match
+  nil
 end
