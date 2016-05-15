@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cookbook-seq
+# Cookbook Name:: cookbook-octochef
 # Recipe:: install
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
