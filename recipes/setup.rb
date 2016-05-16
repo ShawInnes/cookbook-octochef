@@ -6,6 +6,11 @@
 
 setup_done = ::Dir.exist?('C:\SetupDone')
 
+## Disable Windows Update (Damn you and your 900MB downloads over 4G!)
+windows_service 'wuauserv' do
+  action [:stop, :disable]
+end
+
 cookbook_file "#{Chef::Config[:file_cache_path]}/octosample.orderprocessingserver.1.0.50.nupkg" do
   source 'octosample.orderprocessingserver.1.0.50.nupkg'
   action :create

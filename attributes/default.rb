@@ -1,4 +1,4 @@
-default['packagesweb'] = 'http://10.0.1.31:8888'
+default['packagesweb'] = 'http://192.168.33.1:8888'
 
 # default['seq']['source'] = 'https://getseq.blob.core.windows.net/releases/Seq-3.1.17.msi'
 default['seq']['version'] = '3.2.2-pre'

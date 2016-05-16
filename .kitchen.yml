@@ -2,7 +2,8 @@
 driver:
   name: vagrant
   gui: true
-  # provider: virtualbox
+  network:
+    - ["private_network", {ip: "192.168.33.33"}]
 
 provisioner:
   name: chef_zero
